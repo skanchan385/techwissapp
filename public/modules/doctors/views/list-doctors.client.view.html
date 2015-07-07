@@ -1,0 +1,61 @@
+<section data-ng-controller="DoctorsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Doctors</h1>
+        <a href="/#!/doctors/create">Create Doctor</a>
+    </div>
+    <div class="list-group">
+        <div class="row">
+            <div class="col-sm-3">
+                <input type="text" class="form-control" data-ng-model="filter_doctor" placeholder="Search">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <td>S No</td>
+                        <td>Name</td>
+                        <td>Location</td>
+                        <td>Qualification</td>
+                        <td>Speciality</td>
+                        <td>Description</td>
+                        <td>Availability</td>
+                        <td>Time Zone</td>
+                        <td>Links</td>
+                        <td>Created At</td>
+                        <td>Created By</td>
+                        <!--<td>Action</td>-->
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-ng-repeat="doctor in doctors | filter :{speciality:filter_doctor} track by $index" data-ng-href="#!/doctors/{{doctor._id}}">
+                        <td>{{$index+1}}</td>
+                        <!--<td><a data-ng-href="#!/doctors/{{doctor._id}}">{{doctor.name}}</a></td>-->
+                        <td>{{doctor.name}}</td>
+                        <td>{{doctor.location}}</td>
+                        <td><span data-ng-repeat="q in doctor.qualification track by $index">{{q}}{{doctor.qualification.length-1 != $index?", ":""}} </span></td>
+                        <td>{{doctor.speciality}}</td>
+                        <td>{{doctor.description}}</td>
+                        <td>{{doctor.availability}}</td>
+                        <td>{{doctor.time_zone}}</td>
+                        <td>{{doctor.links}}</td>
+                        <td><span data-ng-bind="doctor.created | date:'mediumDate'"></span></td>
+                        <td>{{doctor.user.displayName}}</td>
+                        <!--<td><a class="btn btn-primary" href="/#!/doctors/{{doctor._id}}/edit">-->
+                            <!--<i class="glyphicon glyphicon-edit"></i>-->
+                        <!--</a>-->
+                            <!--<a class="btn btn-primary" data-ng-click="remove(doctor);">-->
+                                <!--<i class="glyphicon glyphicon-trash"></i>-->
+                            <!--</a>-->
+                        <!--</td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!doctors.$resolved || doctors.length">
+    	No Doctors yet, why don't you <a href="/#!/doctors/create">create one</a>?
+    </div>
+</section>

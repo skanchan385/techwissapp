@@ -1,0 +1,54 @@
+<section data-ng-controller="DoctorsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="doctor.name"></h1>
+	</div>
+	<div class="pull-right">
+		<a class="btn btn-primary" href="/#!/doctors/{{doctor._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Created on
+			<span data-ng-bind="doctor.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="doctor.user.displayName"></span>
+		</em>
+	</small>
+	<table class="table">
+		<tr>
+			<td>Name</td>
+			<td>{{doctor.name}}</td>
+		</tr>
+		<tr>
+			<td>location</td>
+			<td>{{doctor.location}}</td>
+		</tr>
+		<tr>
+			<td>Qualification</td>
+			<td><span data-ng-repeat="q in doctor.qualification track by $index">{{q}}{{doctor.qualification.length-1 != $index?", ":""}} </span></td>
+		</tr>
+		<tr>
+			<td>Speciality</td>
+			<td>{{doctor.speciality}}</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>{{doctor.description}}</td>
+		</tr><tr>
+			<td>Availability</td>
+			<td>{{doctor.availability}}</td>
+		</tr>
+		<tr>
+			<td>Time Zone</td>
+			<td>{{doctor.time_zone}}</td>
+		</tr>
+		<tr>
+			<td>Links</td>
+			<td>{{doctor.links}}</td>
+		</tr>
+	</table>
+</section>
