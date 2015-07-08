@@ -1,0 +1,15 @@
+.nav_top{
+	margin:20px 0px 20px 200px;
+}
+.portfolio_nav li{
+	list-style: none;
+	float: left;
+	margin-right: 15px;
+	
+}
+.container_bg {
+	background:#fff;
+	padding:10px 0;
+	margin-bottom:20px;
+}
+

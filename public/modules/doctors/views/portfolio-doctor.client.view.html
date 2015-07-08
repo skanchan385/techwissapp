@@ -1,0 +1,52 @@
+<div style="background:#f2f2f2;">
+    <section data-ng-controller="DoctorsController" data-ng-init="find()" class="vc_row wpb_row container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nav_top">
+                    <ul class="portfolio_nav text-center">
+                        <li><a href="#">ALL DOCTORS</a>    |</li>
+                        <li><a href="#">CARDIOLOGIST</a>   |</li>
+                        <li><a href="#">DENTIST</a>    |</li>
+                        <li><a href="#">NEUROLOGIST</a>    |</li>
+                        <li><a href="#">ORTHOPADIC</a>    |</li>
+                        <li><a href="#">PHYSIOLOGIST</a>    |</li>
+                        <li><a href="#">SERGEON</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 container_bg" data-ng-repeat="doctor in doctors | filter :{speciality:filter_doctor} track by $index" data-ng-href="#!/doctors/{{doctor._id}}">
+                            <div>
+                                <div class="icon-block-icon">
+                                    <i class="fa fa-heart-o"></i><i class="fa fa-share-alt"></i>
+                                    <span class="pull-right">Video chat<i class="fa fa-external-link"></i></span>
+                                </div>
+                            </div>
+                            <img src="modules/doctors/img/doctor.jpg" width="100%" style="overflow:hidden;margin:10px 0px;">
+                            <h5>{{doctor.name}}</h5>
+                            <h6>{{doctor.speciality}}</h6>
+                            <hr style="margin:4px 0px;">
+                            <p>Client:jhgf ighfi g</p>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                            </p>
+                            <button class="btn btn-success pull-right">E-Consulting</button>
+                        </div>
+                        <div class="col-lg-3 container_bg">
+
+                        </div>
+                        <div class="col-lg-3 container_bg">
+
+                        </div>
+                        <div class="col-lg-3 container_bg">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

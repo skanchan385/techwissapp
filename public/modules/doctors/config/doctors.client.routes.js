@@ -20,6 +20,10 @@ angular.module('doctors').config(['$stateProvider',
 		state('editDoctor', {
 			url: '/doctors/:doctorId/edit',
 			templateUrl: 'modules/doctors/views/edit-doctor.client.view.html'
+		}).
+		state('portfolioDoctor', {
+		url: '/doctorsportfolio',
+		templateUrl: 'modules/doctors/views/portfolio-doctor.client.view.html'
 		});
 	}
 ]);
