@@ -1,11 +1,12 @@
 'use strict';
 
 // Doctors controller
-angular.module('doctors').controller('DoctorsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Doctors',
-	function($scope, $stateParams, $location, Authentication, Doctors) {
+angular.module('doctors').controller('DoctorsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Doctors', '$rootScope',
+	function($scope, $stateParams, $location, Authentication, Doctors, $rootScope) {
 		$scope.authentication = Authentication;
 
-		// Create new Doctor
+		$scope.timeZone = $rootScope.defaultTimeZone;
+
 		$scope.create = function() {
 			// Create new Doctor object
 			var doctor = new Doctors ({
@@ -15,7 +16,7 @@ angular.module('doctors').controller('DoctorsController', ['$scope', '$statePara
 				speciality: this.speciality,
 				description: this.description,
 				availability: this.availability,
-				time_zone: this.time_zone,
+				timeZone: this.timeZone,
 				links: this.links
 			});
 
