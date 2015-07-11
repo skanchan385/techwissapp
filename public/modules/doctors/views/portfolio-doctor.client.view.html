@@ -6,37 +6,37 @@
 					<div class="nav_link">
 						<ul class="clearfix">
 							<li>
-								<a href="#" class="active">
+								<a href="javascript:;" class="active" ng-click="doctorFilterModel=''">
 									ALL DOCTORS
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="javascript:;" ng-click="doctorFilterModel='CARDIOLOGIST'">
 									CARDIOLOGIST
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="javascript:;" ng-click="doctorFilterModel='DENTIST'">
 								   DENTIST
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="javascript:;" ng-click="doctorFilterModel='NEUROLOGIST'">
 									NEUROLOGIST
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="javascript:;" ng-click="doctorFilterModel='ORTHOPADIC'">
 									ORTHOPADIC
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="javascript:;" ng-click="doctorFilterModel='PHYSIOLOGIST'">
 									PHYSIOLOGIST
 								</a>
 							</li>
 							<li id="nav_01">
-								<a href="#">
+								<a href="javascript:;" ng-click="doctorFilterModel='SERGEON'">
 									SERGEON
 								</a>
 							</li>
@@ -45,7 +45,7 @@
 				</div>
                 <div class="col-lg-12">
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" data-ng-repeat="doctor in doctors | filter :{speciality:filter_doctor} track by $index" data-ng-href="#!/doctors/{{doctor._id}}">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" data-ng-repeat="doctor in doctors | filter :{speciality:doctorFilterModel} track by $index" data-ng-href="#!/doctors/{{doctor._id}}">
 							<div class="container_bg" >
 								<div>
 									<i class="fa fa-heart-o"></i><span> 3 | </span><i class="fa fa-share-alt"></i>
@@ -54,20 +54,15 @@
 								<div class="inner_img">
 									<img src="modules/doctors/img/doctor.jpg" width="100%"/>
 								</div>
-									<h5>{{doctor.name}}</h5>
-									<h6>{{doctor.speciality}}</h6>
-									<div class="border_green"></div>
-									<p>Client:jhgf ighfi g</p>
-									<p>
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
-									</p>
-									<button class="btn btn-success pull-right">E-Consulting</button>
+								<h5>{{doctor.name}}</h5>
+								<h6>{{doctor.speciality}}</h6>
+								<div class="border_green"></div>
+								<p>Client: None</p>
+								<p>{{doctor.description}}<p>
+								<a data-ng-href="#!/doctors/{{doctor._id}}" class="btn btn-success pull-right">E-Consulting</a>
 							</div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12">
-
                 </div>
             </div>
         </div>

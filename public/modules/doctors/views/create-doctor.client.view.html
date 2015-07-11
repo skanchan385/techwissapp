@@ -1,7 +1,7 @@
 <section data-ng-controller="DoctorsController" data-ng-init="find()" class="vc_row wpb_row container">
    <div class="container">
       <div class="row">
-         <form class="form-horizontal" style="margin-top:30px;" data-ng-submit="create()" novalidate>
+         <form class="form-horizontal" name="createDoctorForm" style="margin-top:30px;" data-ng-submit="create(createDoctorForm)" novalidate>
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 ">
                <div class="form-group">
                   <label class="control-label" for="name">Name</label>
@@ -26,9 +26,12 @@
                   <label class="control-label" for="speciality">Speciality</label>
                   <div class="controls">
                      <select data-ng-model="speciality" id="speciality" class="form-control marg_less" required>
-                        <option value="Orthopedic">Orthopedic</option>
-                        <option value="Dentist">Dentist</option>
-                        <option value="hysian">Physian</option>
+                        <option value="CARDIOLOGIST">CARDIOLOGIST</option>
+                        <option value="DENTIST">DENTIST</option>
+                        <option value="NEUROLOGIST">NEUROLOGIST</option>
+                        <option value="ORTHOPADIC">ORTHOPADIC</option>
+                        <option value="PHYSIOLOGIST">PHYSIOLOGIST</option>
+                        <option value="SERGEON">SERGEON</option>
                      </select>
                   </div>
                </div>
@@ -40,7 +43,7 @@
                <div class="form-group">
                   <label class="control-label" for="description">Description</label>
                   <div class="controls">
-                     <input type="text" data-ng-model="description" id="description" class="form-control marg_less" placeholder="Description" required>
+                     <textarea rows="6" class="form-control" data-ng-model="description" id="description" class="form-control marg_less" placeholder="Description" required></textarea>
                   </div>
                </div>
                <div class="form-group">
@@ -60,23 +63,13 @@
                <div class="form-group">
                   <label class="control-label" for="links">Links</label>
                   <div class="controls">
-                     <input type="text" data-ng-model="links" id="links" class="form-control marg_less" placeholder="Links" required>
+                     <input type="url" data-ng-model="links" id="links" class="form-control marg_less" placeholder="Links" required>
                   </div>
                </div>
                <div class="form-group">
                   <label class="control-label">
-                     <div class="controls">
-                        Drop File:
-                        <div ngf-drop ngf-select ng-model="files" class="drop-box"
-                           ngf-drag-over-class="dragover" ngf-multiple="true" ngf-allow-dir="true"
-                           accept="image/*,application/pdf">Drop pdfs or images here or click to upload</div>
-                        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
-                        Files:
-                        <ul>
-                           <li ng-repeat="f in files" style="font:smaller">{{f.name}}</li>
-                        </ul>
-                        Upload Log:
-                        <pre>{{log}}</pre>
+                     <div class="controls" data-ng-controller="fileUploadController">
+                        <div class="button" ngf-select ngf-change="upload($files)">Upload on file change</div>
                      </div>
                   </label>
                </div>

@@ -1,8 +1,17 @@
+h1 {
+	text-transform: none;
+}
+.rating {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.rating .glyphicon-star {
+	color: yellowgreen;
+}
 .portfolio_nav li{
 	list-style: none;
 	float: left;
 	margin-right: 15px;
-	
 }
 .container_bg {
 	background: #fff;

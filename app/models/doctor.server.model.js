@@ -41,7 +41,7 @@ var DoctorSchema = new Schema({
 		required: 'Please fill availability',
 		trim: true
 	},
-	time_zone: {
+	timeZone: {
 		type: String,
 		default: '',
 		required: 'Please fill time zone',

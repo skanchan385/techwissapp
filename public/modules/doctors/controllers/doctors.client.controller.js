@@ -1,34 +1,52 @@
 'use strict';
 
-// Doctors controller
-angular.module('doctors').controller('DoctorsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Doctors', '$rootScope',
-	function($scope, $stateParams, $location, Authentication, Doctors, $rootScope) {
+angular.module('doctors').controller('DoctorsController', ['$timeout', '$scope', '$stateParams', '$location', 'Authentication', 'Doctors', '$rootScope',
+	function($timeout, $scope, $stateParams, $location, Authentication, Doctors, $rootScope) {
 		$scope.authentication = Authentication;
 
 		$scope.timeZone = $rootScope.defaultTimeZone;
+		$scope.eventSources = [];
 
-		$scope.create = function() {
-			// Create new Doctor object
-			var doctor = new Doctors ({
-				name: this.name,
-				location: this.location,
-				qualification: this.qualification,
-				speciality: this.speciality,
-				description: this.description,
-				availability: this.availability,
-				timeZone: this.timeZone,
-				links: this.links
+		$scope.rate = 4;
+		$scope.max = 5;
+		$scope.isReadonly = false;
+
+		$scope.hoveringOver = function(value) {
+			$scope.overStar = value;
+			$scope.percent = 100 * (value / $scope.max);
+
+		};
+
+
+		$scope.create = function(createDoctorForm) {
+			angular.forEach(createDoctorForm.$error.required, function(field) {
+				if(!field.$valid) {
+					field.$setViewValue(field.$viewValue);
+				}
 			});
+			if(createDoctorForm.$valid) {
+				// Create new Doctor object
+				var doctor = new Doctors ({
+					name: this.name,
+					location: this.location,
+					qualification: this.qualification,
+					speciality: this.speciality,
+					description: this.description,
+					availability: this.availability,
+					timeZone: this.timeZone,
+					links: this.links
+				});
 
-			// Redirect after save
-			doctor.$save(function(response) {
-				$location.path('doctors/' + response._id);
+				// Redirect after save
+				doctor.$save(function(response) {
+					$location.path('doctors/' + response._id);
 
-				// Clear form fields
-				$scope.name = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
+					// Clear form fields
+					$scope.name = '';
+				}, function(errorResponse) {
+					$scope.error = errorResponse.data.message;
+				});
+			}
 		};
 
 		// Remove existing Doctor

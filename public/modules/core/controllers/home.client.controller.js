@@ -151,14 +151,14 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 		$scope.getDefaultTimeZone = function () {
 			var offset = new Date().getTimezoneOffset(), o = Math.abs(offset);
-			var hours = (offset < 0 ? "+" : "-") + ("00" + Math.floor(o / 60)).slice(-2) + ":" + ("00" + (o % 60)).slice(-2);
+			var hours = (offset < 0 ? '+' : '-') + ('00' + Math.floor(o / 60)).slice(-2) + ':' + ('00' + (o % 60)).slice(-2);
 			angular.forEach($scope.timeZoneArray, function (value, key) {
 				if(key.indexOf(hours) > 0) {
 					$rootScope.defaultTimeZone = value;
-;					return;
+					return;
 				}
 			});
-		}
+		};
 		$scope.defaultTimeZone = $scope.getDefaultTimeZone();
 
 	}
