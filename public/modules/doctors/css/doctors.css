@@ -18,6 +18,13 @@ h1 {
 	margin-bottom: 20px;
 	padding: 10px 10px 45px 10px;
 }
+.doc-description{
+	height:112px;
+	overflow:hidden;
+}
+.container_bg:hover{
+	box-shadow:0 2px 2px rgba(0,0,0,.50);
+}
 .border_green{
 	height: 1px;
 	background: #5CB85C;
@@ -68,6 +75,24 @@ h1 {
 }
 .marg_less{
 	margin-bottom:-13px;
+}
+.inner_img{
+	position:relative;
+	display: inline-block;
+    background: black;
+}
+.inner_img .mask{
+	display: none;
+	position:absolute;
+	top:20px;
+	left:20px;
+}
+.inner_img:hover .info{
+    opacity: 0.5;
+    cursor:pointer;
+}
+.inner_img:hover .mask{
+    display:block;
 }
 
 @media screen and (max-width: 768px) {
